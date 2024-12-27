@@ -1,7 +1,3 @@
-Certainly! Here's the complete document as a single file in markdown format:
-
-markdown
-Copy code
 # Project-CRV2
 
 **Project-CRV2** is a chatbot-powered query system for analyzing a dataset of business contacts. It leverages OpenAI embeddings, Pinecone for vector similarity search, and a streamlined Python workflow for efficient data querying.
