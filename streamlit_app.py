@@ -32,15 +32,17 @@ query_text = st.text_input("Enter your search query:")
 
 if st.button("Search"):
     if query_text:
-        query_embedding = get_embedding_safe(query_text)
-        if query_embedding:
-            results = index.query(
-                vector=query_embedding,
-                top_k=100,
-                include_metadata=True
-            )
-            count = sum(1 for match in results["matches"] 
-                       if "hampshire" in match["metadata"].get("Data", "").lower())
-            st.success(f"Count of records mentioning 'Hampshire': {count}")
+        with st.spinner('Searching...'):  # Add loading indicator
+            query_embedding = get_embedding_safe(query_text)
+            if query_embedding:
+                results = index.query(
+                    vector=query_embedding,
+                    top_k=100,
+                    include_metadata=True
+                )
+                # Updated to use the actual query term
+                count = sum(1 for match in results["matches"] 
+                          if query_text.lower() in match["metadata"].get("Data", "").lower())
+                st.success(f"Count of records mentioning '{query_text}': {count}")
     else:
         st.warning("Please enter a search query") 
