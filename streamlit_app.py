@@ -3,7 +3,6 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 from pinecone import Pinecone
-import re
 
 # Load environment variables
 load_dotenv()
@@ -45,6 +44,7 @@ if st.button("Search"):
         with st.spinner('Searching...'):
             # Extract key search terms
             search_terms = extract_search_terms(query_text)
+            st.write(f"Searching for: {search_terms}")  # Debug line
             query_embedding = get_embedding_safe(search_terms)
             
             if query_embedding:
