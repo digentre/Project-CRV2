@@ -31,9 +31,4 @@
 ```bash
 git clone https://github.com/your-username/Project-CRV2.git
 cd Project-CRV2
-#### **Step 2: Set up the virtual environment**
 
-For Windows:
-```bash
-python -m venv .venv
-.venv\Scripts\activate
