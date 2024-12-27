@@ -36,7 +36,7 @@ pc = Pinecone(api_key=api_key)
 index = pc.Index("project-crv2")
 
 # Streamlit interface
-st.title("Hampshire Record Search")
+st.title("Countrunner V2")
 query_text = st.text_input("Enter your search query:")
 
 if st.button("Search"):
