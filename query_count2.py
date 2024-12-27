@@ -5,12 +5,12 @@ from dotenv import load_dotenv
 load_dotenv()
 
 from pinecone import Pinecone
-import openai
+from openai import OpenAI
 
 # Initialize OpenAI and Pinecone
-openai.api_key = os.getenv("OPENAI_API_KEY")
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 api_key = os.getenv("PINECONE_API_KEY")
-if not api_key or not openai.api_key:
+if not api_key or not client.api_key:
     raise ValueError("Both PINECONE_API_KEY and OPENAI_API_KEY environment variables must be set!")
 
 pc = Pinecone(api_key=api_key)
@@ -26,8 +26,11 @@ query_text = "Hampshire"
 # Generate embedding for the query
 def get_embedding_safe(text, model="text-embedding-ada-002"):
     try:
-        response = openai.Embedding.create(input=text, model=model)
-        return response['data'][0]['embedding']
+        response = client.embeddings.create(
+            input=text,
+            model=model
+        )
+        return response.data[0].embedding
     except Exception as e:
         print(f"Error generating embedding for query: {text}\n{e}")
         return None
