@@ -1,6 +1,6 @@
 # Countrunner V2
 
-A Streamlit application that uses AI-powered vector search to find and count records in a database. The app processes natural language queries and searches through documents using OpenAI embeddings and Pinecone vector database.
+A Streamlit application that uses AI-powered vector search to find and count records in a business to business database. The app processes natural language queries and searches through documents using OpenAI embeddings and Pinecone vector database.
 
 ## Features
 
